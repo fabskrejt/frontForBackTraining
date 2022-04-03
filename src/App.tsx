@@ -2,19 +2,26 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import axios from "axios";
 
+type UsersType = {
+    name: string
+}
+const state: Array<UsersType> | null = null
+
 function App() {
-    const [users, setUsers] = useState([{name: 'usr'}])
-    console.log(users)
+    const [users, setUsers] = useState(state)
+
     useEffect(() => {
         axios.get('http://localhost:4000/users')
             .then(res => setUsers(res.data))
     }, [])
-    const usr = users.map(u => {
-        return <span key={u.name}>{u.name}</span>
-    })
+
+    console.log(users)
+
     return (
         <div className="App">
-            {usr}
+            {users && users.map(u => {
+                return <span key={u.name}>{u.name} <br/> </span>
+            })}
         </div>
     );
 }
