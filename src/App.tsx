@@ -28,10 +28,10 @@ function App() {
 
     return (
         <div className="App">
+            <button onClick={createUser}>Create user</button> <br></br>
             {users && users.map(u => {
                 return <span key={u.name}>{u.name} <br/> </span>
             })}
-            <button onClick={createUser}>Create user</button>
         </div>
     );
 }
